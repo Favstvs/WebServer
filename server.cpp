@@ -1,6 +1,7 @@
 /*
-* [98] bind()
-* zsh: IOT instruction  ./server
+* if error: [98] bind()
+*           zsh: IOT instruction  ./server
+* change    addr.sin_port = ntohs(1234);
 */
 
 #include <assert.h>
@@ -107,7 +108,7 @@ int main() {
     // bind
     struct sockaddr_in addr = {};
     addr.sin_family = AF_INET;
-    addr.sin_port = ntohs(1234);
+    addr.sin_port = ntohs(1235);
     addr.sin_addr.s_addr = ntohl(0);    // wildcard address 0.0.0.0
     int rv = bind(fd, (const sockaddr *)&addr, sizeof(addr));
     if (rv) {
